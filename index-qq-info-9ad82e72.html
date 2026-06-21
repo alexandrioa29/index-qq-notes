@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腾讯体育 - 再次相逢的角落</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f7fa;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 / 导航区 */
+    .hero-nav {
+      background: linear-gradient(145deg, #0b1a2e 0%, #142b44 100%);
+      color: #e4edf5;
+      padding: 1.2rem 2rem 2.8rem 2rem;
+      border-bottom: 1px solid #2d4b66;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .site-logo {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .site-logo span {
+      background: #3d7f9e;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 0.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #b6d0e3;
+      text-decoration: none;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      border-bottom-color: #78b9d8;
+    }
+
+    /* 头图中央标语 */
+    .hero-content {
+      max-width: 1200px;
+      margin: 1.8rem auto 0 auto;
+      text-align: left;
+    }
+
+    .hero-content h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      max-width: 700px;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-content h1 strong {
+      font-weight: 600;
+      color: #aad0f0;
+    }
+
+    .hero-content .sub {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: #cbdae8;
+      max-width: 580px;
+      border-left: 3px solid #5c8cb0;
+      padding-left: 1rem;
+    }
+
+    /* 浅色正文区 */
+    .main-wrap {
+      max-width: 1200px;
+      margin: -0.8rem auto 0 auto;
+      padding: 0 2rem 3rem 2rem;
+      position: relative;
+    }
+
+    /* 三个场景卡片 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 2.5rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem 2rem 1.6rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      transition: 0.25s ease;
+      border: 1px solid #eef2f7;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 12px 28px rgba(0, 20, 30, 0.08);
+      border-color: #c9dae9;
+    }
+
+    .scene-card .emoji-badge {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1a2c3e;
+    }
+
+    .scene-card p {
+      font-size: 0.96rem;
+      color: #3d526a;
+      margin-bottom: 0.4rem;
+    }
+
+    .scene-card .hint {
+      font-size: 0.85rem;
+      color: #6d839b;
+      border-top: 1px dashed #dce5ed;
+      padding-top: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-cluster {
+      margin: 3rem 0 2rem 0;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.2rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e6edf4;
+    }
+
+    .faq-cluster h2 {
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: #1f3347;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #eef3f9;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      min-width: 120px;
+      color: #0f263b;
+    }
+
+    .faq-a {
+      color: #456078;
+      flex: 1;
+    }
+
+    .faq-a a {
+      color: #1c6f94;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #b0cbd9;
+    }
+
+    .faq-a a:hover {
+      color: #06425f;
+      border-bottom-style: solid;
+    }
+
+    /* 一个自然的强调句子 (内含链接) */
+    .gentle-reminder {
+      margin-top: 2.4rem;
+      padding: 1.3rem 1.8rem;
+      background: #eaf1f9;
+      border-radius: 40px;
+      font-size: 1rem;
+      color: #1a2f42;
+      text-align: center;
+      border: 1px solid #d0e0ee;
+    }
+
+    .gentle-reminder a {
+      color: #1c6f94;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #9abcd4;
+    }
+
+    .gentle-reminder a:hover {
+      color: #043f5c;
+      border-bottom-color: #043f5c;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      color: #6e839b;
+      font-size: 0.85rem;
+      padding: 2rem 1rem 1.8rem 1rem;
+      border-top: 1px solid #dce6ef;
+      margin-top: 1.5rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .scenes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+      }
+
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .hero-nav {
+        padding: 1rem 1.2rem 2rem 1.2rem;
+      }
+
+      .main-wrap {
+        padding: 0 1rem 2.5rem 1rem;
+      }
+
+      .faq-cluster {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .faq-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+
+      .faq-q {
+        min-width: unset;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-nav">
+    <div class="nav-inner">
+      <div class="site-logo">
+        <span></span> 腾讯体育 · 再访
+      </div>
+      <nav class="nav-links">
+        <a href="#">首页</a>
+        <a href="#">赛事</a>
+        <a href="#">社区</a>
+        <a href="#">我的</a>
+      </nav>
+    </div>
+    <div class="hero-content">
+      <h1>再次点开 <strong>收藏夹</strong>，<br>像翻开一本熟悉的赛事手记。</h1>
+      <div class="sub">有些页面值得反复回来——不只是数据，还有看球时的那份自在。</div>
+    </div>
+  </header>
+
+  <div class="main-wrap">
+    <!-- 三个场景模块 轻量化卡片 -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <div class="emoji-badge">🏟️</div>
+        <h3>回到赛场</h3>
+        <p>电脑或手机，一样的赛程、实时比分、阵容变化。上次没看完的加时，这次继续。</p>
+        <div class="hint">收藏夹里存好链接，下次找起来更快。</div>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">📋</div>
+        <h3>个人观赛笔记</h3>
+        <p>随手记下关键回合与球员状态，偶尔翻翻之前的记录，总能发现新的细节。</p>
+        <div class="hint">每个赛季都是独特的叙事。</div>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">🔖</div>
+        <h3>持续关注</h3>
+        <p>订阅的联赛、喜欢的队伍、赛前前瞻——保持跟进不必费力，打开收藏就好。</p>
+        <div class="hint">熟悉的入口，安心的节奏。</div>
+      </div>
+    </div>
+
+    <!-- 常见说明 (faq摘要) 温和语气 -->
+    <div class="faq-cluster">
+      <h2>一些你可能想起来的细节</h2>
+      <div class="faq-item">
+        <span class="faq-q">⚙️ 再次访问？</span>
+        <span class="faq-a">直接把 <a href="https://index-qq.com">腾讯体育</a> 加入浏览器书签或手机收藏夹，下次用同一设备打开就能看到最近的浏览记录。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">📌 收藏同步？</span>
+        <span class="faq-a">登录同一账户后，收藏的比赛和关注列表在网页和移动端之间基本一致，方便随时切换。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">🔄 信息更新</span>
+        <span class="faq-a">赛程和新闻每日刷新，重要的转会或伤病消息通常在首页就会展示。偶尔回来看看总会有新内容。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">💬 关于社区讨论</span>
+        <span class="faq-a">每场比赛配有评论区，理性聊球的气氛一直不错。如果你愿意，也可以只看不评。</span>
+      </div>
+    </div>
+
+    <!-- 自然的强调句 包含链接 文本严格=腾讯体育 -->
+    <div class="gentle-reminder">
+      🧭 如果你之前来过这里，或许想再逛逛 
+      <a href="https://index-qq.com">腾讯体育</a> —— 
+      熟悉的界面，偶尔更新的版面，不变的是一份对体育的专注。
+    </div>
+
+    <!-- 轻量页脚 -->
+    <div class="footer-note">
+      <span>基于真实感受 · 非官方介绍页</span>
+    </div>
+  </div>
+</body>
+</html>
